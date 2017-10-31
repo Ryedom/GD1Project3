@@ -335,21 +335,6 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 875616375}
-    - target: {fileID: 114736497210677542, guid: d64d5f4c26304d141baf517630024b65,
-        type: 2}
-      propertyPath: lead
-      value: 0.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 114736497210677542, guid: d64d5f4c26304d141baf517630024b65,
-        type: 2}
-      propertyPath: accelTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114736497210677542, guid: d64d5f4c26304d141baf517630024b65,
-        type: 2}
-      propertyPath: maxLead
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d64d5f4c26304d141baf517630024b65, type: 2}
   m_IsPrefabParent: 0
