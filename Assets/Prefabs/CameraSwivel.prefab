@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  accelTime: 2
+  maxLead: 0.5
 --- !u!124 &124277874333958446
 Behaviour:
   m_ObjectHideFlags: 1
