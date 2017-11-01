@@ -295,15 +295,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
       propertyPath: m_LocalRotation.w
@@ -327,6 +327,24 @@ Prefab:
         type: 2}
       propertyPath: lead
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736497210677542, guid: d64d5f4c26304d141baf517630024b65,
+        type: 2}
+      propertyPath: cameraOffset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736497210677542, guid: d64d5f4c26304d141baf517630024b65,
+        type: 2}
+      propertyPath: multiView
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d64d5f4c26304d141baf517630024b65, type: 2}

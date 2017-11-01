@@ -9,11 +9,12 @@ public class CameraTrack : MonoBehaviour {
     [SerializeField]
     GameObject target;
     GameObject camera;
-    AnimationCurve ease;
     [SerializeField]
     float accelTime;
     [SerializeField]
     float cameraOffset;
+    [SerializeField]
+    float cameraOverlap;
     float startTime;
     [SerializeField]
     float maxLead;
@@ -26,26 +27,23 @@ public class CameraTrack : MonoBehaviour {
 	void Start () {
         targetBod = target.GetComponent<Rigidbody>();
         lead = 0;
-        ease = AnimationCurve.EaseInOut(0f, 0f, accelTime, maxLead);
         camera = GameObject.Find("Main Camera");
 	}
 
 	// Update is called once per frame
 	public void Update () {
         radius = Vector3.Distance(transform.position, target.transform.position);
-        // print(radius);
-        if(Input.GetKeyDown("w") || Input.GetKeyDown("s")) {
+        if(targetBod.velocity == Vector3.zero) {
             startTime = Time.time;
         }
 
         lead = Mathf.SmoothStep(0, maxLead, (Time.time - startTime) / accelTime) * (radius / 100);
         transform.rotation = Quaternion.LookRotation((targetBod != null ? (target.transform.position + targetBod.velocity * lead) : target.transform.position) - transform.position, Vector3.up);
         if(!multiView || radius < cameraOffset * transform.lossyScale.x) {
-            camera.transform.localPosition = new Vector3(0f, 0f, -cameraOffset);
+            camera.transform.localPosition = new Vector3(0f, 0f, -cameraOffset + cameraOverlap);
         }
         else {
-            camera.transform.localPosition = new Vector3(0f, 0f, cameraOffset);
+            camera.transform.localPosition = new Vector3(0f, 0f, cameraOffset - cameraOverlap);
         }
-        // print(targetBod.velocity);
 	}
 }
