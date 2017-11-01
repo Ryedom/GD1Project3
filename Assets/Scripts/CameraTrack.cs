@@ -15,13 +15,11 @@ public class CameraTrack : MonoBehaviour {
     float lead;
     float radius;
     Rigidbody targetBod;
-    bool starting;
 
 
 	// Use this for initialization
 	void Start () {
         targetBod = target.GetComponent<Rigidbody>();
-        starting = false;
         lead = 0;
         ease = AnimationCurve.EaseInOut(0f, 0f, accelTime, maxLead);
         camera = GameObject.Find("Main Camera");
@@ -32,7 +30,6 @@ public class CameraTrack : MonoBehaviour {
         radius = Vector3.Distance(transform.position, target.transform.position);
         // print(radius);
         if(Input.GetKeyDown("w") || Input.GetKeyDown("s")) {
-            starting = true;
             startTime = Time.time;
         }
 
