@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class CameraTrack : MonoBehaviour {
 
-    public bool multiView;
-    public GameObject target;
+    [SerializeField]
+    bool multiView;
+    [SerializeField]
+    GameObject target;
     GameObject camera;
     AnimationCurve ease;
-    public float accelTime;
-    public float cameraOffset;
+    [SerializeField]
+    float accelTime;
+    [SerializeField]
+    float cameraOffset;
     float startTime;
-    public float maxLead;
+    [SerializeField]
+    float maxLead;
     float lead;
     float radius;
     Rigidbody targetBod;
@@ -26,7 +31,7 @@ public class CameraTrack : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
         radius = Vector3.Distance(transform.position, target.transform.position);
         // print(radius);
         if(Input.GetKeyDown("w") || Input.GetKeyDown("s")) {
@@ -35,7 +40,7 @@ public class CameraTrack : MonoBehaviour {
 
         lead = Mathf.SmoothStep(0, maxLead, (Time.time - startTime) / accelTime) * (radius / 100);
         transform.rotation = Quaternion.LookRotation((targetBod != null ? (target.transform.position + targetBod.velocity * lead) : target.transform.position) - transform.position, Vector3.up);
-        if( !multiView || radius < cameraOffset * transform.lossyScale.x) {
+        if(!multiView || radius < cameraOffset * transform.lossyScale.x) {
             camera.transform.localPosition = new Vector3(0f, 0f, -cameraOffset);
         }
         else {

@@ -12,24 +12,43 @@ public class Player : MonoBehaviour {
 	Rigidbody _rigid;
 	Transform _model;
 	RaycastHit _normalHit;
+	Vector2 inputVector;
 
 	Quaternion _rotationTurn = Quaternion.identity; // Rotation of the player turning
 	Quaternion _rotationPlane = Quaternion.identity; // Rotation of the player snapping to the ground
 	bool _canBark = true;
 	float _barkTimer;
-	
+
 	void Start () {
 		_rigid = GetComponent<Rigidbody>();
 		_model = transform.GetChild(0);
 		_barkTimer = _barkLength;
 	}
-	
+
 	void Update () {
 		if (Input.GetKey(KeyCode.Escape))
 			Application.Quit();
 		if (Input.GetKey(KeyCode.R))
 			UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-		
+
+		inputVector = new Vector2(-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+
+		// Bark timer
+		if (!_canBark) {
+			_barkTimer -= Time.deltaTime;
+			if (_barkTimer < 0.0f)
+				_canBark = true;
+		}
+
+		// Bark if pressed
+		if (Input.GetButtonDown("Jump") && _canBark) {
+			GameObject.Instantiate(_barkPrefab,transform.position,transform.rotation);
+			_canBark = false;
+			_barkTimer = _barkLength;
+		}
+	}
+
+	void FixedUpdate () {
 		// Keep track of the current normal (by default it's world up)
 		Vector3 currentNormal = Vector3.up;
 		// Find the closest normal to the ground
@@ -37,8 +56,7 @@ public class Player : MonoBehaviour {
 			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
 				currentNormal = _normalHit.normal;
 		}
-		
-		Vector2 inputVector = new Vector2(-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+
 		Vector2 rawInputVector = inputVector;
 		inputVector.Normalize();
 		float inputAngle = (Vector2.SignedAngle(Vector2.up,inputVector) + 360.0f) % 360.0f;
@@ -74,20 +92,6 @@ public class Player : MonoBehaviour {
 		// Make the player move forward now that they are tangent to the ground
 		if (inputVector.magnitude > 0.1f) {
 			_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward,ForceMode.VelocityChange);
-		}
-
-		// Bark timer
-		if (!_canBark) {
-			_barkTimer -= Time.deltaTime;
-			if (_barkTimer < 0.0f)
-				_canBark = true;
-		}
-
-		// Bark if pressed
-		if (Input.GetButtonDown("Jump") && _canBark) {
-			GameObject.Instantiate(_barkPrefab,transform.position,transform.rotation);
-			_canBark = false;
-			_barkTimer = _barkLength;
 		}
 
 		// "Gravity" (move towards the hill)
