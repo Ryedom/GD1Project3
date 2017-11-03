@@ -32,6 +32,7 @@ public class CameraTrack : MonoBehaviour {
 
 	// Update is called once per frame
 	public void Update () {
+        // print(targetBod.velocity);
         radius = Vector3.Distance(transform.position, target.transform.position);
         if(targetBod.velocity == Vector3.zero) {
             startTime = Time.time;
@@ -46,4 +47,9 @@ public class CameraTrack : MonoBehaviour {
             camera.transform.localPosition = new Vector3(0f, 0f, cameraOffset - cameraOverlap);
         }
 	}
+
+    public void LateUpdate()
+    {
+        // print(targetBod.velocity);
+    }
 }

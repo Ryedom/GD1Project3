@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 		_rigid = GetComponent<Rigidbody>();
-		_model = transform.GetChild(0);
+		// _model = transform.GetChild(0);
 		_barkTimer = _barkLength;
 	}
 
