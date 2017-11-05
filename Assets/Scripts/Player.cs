@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	GameObject _barkPrefab;
 	[SerializeField]
+	GameObject _dog;
+	[SerializeField]
 	float _barkLength;
 	[SerializeField]
 	float _playerSpeed = 5.0f;
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour {
 	float _barkTimer;
 
 	void Start () {
-		_rigid = GetComponent<Rigidbody>();
+		_rigid = GetComponent<Rigidbody> ();
 		// _model = transform.GetChild(0);
 		_barkTimer = _barkLength;
 	}
@@ -49,6 +51,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		Animator dog_animator = _dog.GetComponent<Animator> ();
+		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();
 		// Keep track of the current normal (by default it's world up)
 		Vector3 currentNormal = Vector3.up;
 		// Find the closest normal to the ground
@@ -62,6 +66,12 @@ public class Player : MonoBehaviour {
 		float inputAngle = (Vector2.SignedAngle(Vector2.up,inputVector) + 360.0f) % 360.0f;
 		// Movement logic
 		if (inputVector.magnitude >= 0.01f) {
+
+			if (_dog.activeSelf) {
+				print ("walking");
+				dog_animator.SetBool ("Walking", true);
+			}
+
 			float camAngle = Camera.main.transform.eulerAngles.y;
 			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
 			Quaternion camRotation = Quaternion.AngleAxis(camAngle,Vector3.up);
@@ -91,9 +101,9 @@ public class Player : MonoBehaviour {
 
 		// Make the player move forward now that they are tangent to the ground
 		if (inputVector.magnitude > 0.1f) {
-			_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward,ForceMode.VelocityChange);
+			_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
 		}
-
+	
 		// "Gravity" (move towards the hill)
 		_rigid.AddForce(-currentNormal * (20.0f * 60.0f) * Time.deltaTime,ForceMode.Acceleration);
 	}
