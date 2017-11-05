@@ -27,13 +27,15 @@ public class Player : MonoBehaviour {
 		_barkTimer = _barkLength;
 	}
 
+
+
 	void Update() {
 		if (Input.GetKey(KeyCode.Escape))
 			Application.Quit();
 		if (Input.GetKey(KeyCode.R))
 			UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 
-		inputVector = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+		inputVector = new Vector2(-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 
 		// Bark timer
 		if (!_canBark) {
@@ -68,13 +70,14 @@ public class Player : MonoBehaviour {
 		if (inputVector.magnitude >= 0.01f) {
 
 			if (_dog.activeSelf) {
-				print ("walking");
+				//print ("walking");
 				if(dog_animator.runtimeAnimatorController != null)
 					dog_animator.SetBool ("Walking", true);
 			}
 
+			inputAngle += 90.0f;
 			float camAngle = Camera.main.transform.eulerAngles.y;
-			float camInputAngle = (camAngle - inputAngle + 360.0f + 90) % 360.0f;
+			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
 			Quaternion camRotation = Quaternion.AngleAxis(camAngle,Vector3.up);
 			Quaternion inputRotation = Quaternion.AngleAxis(inputAngle,Vector3.up);
 
@@ -91,7 +94,14 @@ public class Player : MonoBehaviour {
 			transform.rotation = Quaternion.RotateTowards(transform.rotation,transform.rotation * _rotationTurn, 10.0f);
 			//transform.rotation *= _rotationTurn;
 		}
-		else inputVector = Vector2.zero;
+		else {
+			inputVector = Vector2.zero;
+			if (_dog.activeSelf) {
+				//print ("stop walking");
+				if(dog_animator.runtimeAnimatorController != null)
+					dog_animator.SetBool ("Walking", false);
+			}
+		}
 
 		// Make the player be tangent to the ground below
 		Vector3 right = transform.right;
@@ -103,7 +113,7 @@ public class Player : MonoBehaviour {
 
 		// Make the player move forward now that they are tangent to the ground
 		if (inputVector.magnitude > 0.1f) {
-			// _rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
+			//_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
 		}
 
 		// "Gravity" (move towards the hill)
