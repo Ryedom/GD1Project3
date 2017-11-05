@@ -68,7 +68,7 @@ public class Player : MonoBehaviour {
 		if (inputVector.magnitude >= 0.01f) {
 
 			if (_dog.activeSelf) {
-				print ("walking");
+				// print ("walking");
 				if(dog_animator.runtimeAnimatorController != null)
 					dog_animator.SetBool ("Walking", true);
 			}
@@ -90,7 +90,10 @@ public class Player : MonoBehaviour {
 			_rotationTurn = camRotation * inputRotation * Quaternion.Inverse(playerFacing);
 			transform.rotation *= _rotationTurn;
 		}
-		else inputVector = Vector2.zero;
+		else {
+			inputVector = Vector2.zero;
+			dog_animator.SetBool ("Walking", false);
+		}
 
 		// Make the player be tangent to the ground below
 		Vector3 right = transform.right;
