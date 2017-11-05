@@ -346,6 +346,11 @@ Prefab:
       propertyPath: multiView
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114736497210677542, guid: d64d5f4c26304d141baf517630024b65,
+        type: 2}
+      propertyPath: cameraOverlap
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d64d5f4c26304d141baf517630024b65, type: 2}
   m_IsPrefabParent: 0
