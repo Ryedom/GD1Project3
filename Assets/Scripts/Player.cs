@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.R))
 			UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 
-		inputVector = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+		inputVector = new Vector2(-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 
 		// Bark timer
 		if (!_canBark) {
@@ -73,8 +73,8 @@ public class Player : MonoBehaviour {
 					dog_animator.SetBool ("Walking", true);
 			}
 
-			float camAngle = Camera.main.transform.eulerAngles.y;
-			float camInputAngle = (camAngle - inputAngle + 360.0f + 90) % 360.0f;
+			float camAngle = Camera.main.transform.eulerAngles.y + 90;
+			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
 			Quaternion camRotation = Quaternion.AngleAxis(camAngle,Vector3.up);
 			Quaternion inputRotation = Quaternion.AngleAxis(inputAngle,Vector3.up);
 
