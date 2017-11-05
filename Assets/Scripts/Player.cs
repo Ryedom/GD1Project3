@@ -23,13 +23,29 @@ public class Player : MonoBehaviour {
 		_model = transform.GetChild(0);
 		_barkTimer = _barkLength;
 	}
-	
-	void Update () {
+
+	void Update() {
 		if (Input.GetKey(KeyCode.Escape))
 			Application.Quit();
 		if (Input.GetKey(KeyCode.R))
 			UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-		
+
+		// Bark timer
+		if (!_canBark) {
+			_barkTimer -= Time.deltaTime;
+			if (_barkTimer < 0.0f)
+				_canBark = true;
+		}
+
+		// Bark if pressed
+		if (Input.GetButtonDown("Jump") && _canBark) {
+			GameObject.Instantiate(_barkPrefab,transform.position,transform.rotation);
+			_canBark = false;
+			_barkTimer = _barkLength;
+		}
+	}
+	
+	void FixedUpdate () {
 		// Keep track of the current normal (by default it's world up)
 		Vector3 currentNormal = Vector3.up;
 		// Find the closest normal to the ground
@@ -59,7 +75,8 @@ public class Player : MonoBehaviour {
 				playerFacing = Quaternion.Inverse(playerFacing);
 
 			_rotationTurn = camRotation * inputRotation * Quaternion.Inverse(playerFacing);
-			transform.rotation *= _rotationTurn;
+			transform.rotation = Quaternion.RotateTowards(transform.rotation,transform.rotation * _rotationTurn, 10.0f);
+			//transform.rotation *= _rotationTurn;
 		}
 		else inputVector = Vector2.zero;
 
@@ -73,21 +90,7 @@ public class Player : MonoBehaviour {
 
 		// Make the player move forward now that they are tangent to the ground
 		if (inputVector.magnitude > 0.1f) {
-			_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward,ForceMode.VelocityChange);
-		}
-
-		// Bark timer
-		if (!_canBark) {
-			_barkTimer -= Time.deltaTime;
-			if (_barkTimer < 0.0f)
-				_canBark = true;
-		}
-
-		// Bark if pressed
-		if (Input.GetButtonDown("Jump") && _canBark) {
-			GameObject.Instantiate(_barkPrefab,transform.position,transform.rotation);
-			_canBark = false;
-			_barkTimer = _barkLength;
+			_rigid.AddForce(Mathf.Max(10.0f - _rigid.velocity.magnitude, 0.0f) * transform.forward,ForceMode.VelocityChange);
 		}
 
 		// "Gravity" (move towards the hill)
