@@ -69,10 +69,11 @@ public class Player : MonoBehaviour {
 
 			if (_dog.activeSelf) {
 				print ("walking");
-				dog_animator.SetBool ("Walking", true);
+				if(dog_animator.runtimeAnimatorController != null)
+					dog_animator.SetBool ("Walking", true);
 			}
 
-			float camAngle = Camera.main.transform.eulerAngles.y;
+			float camAngle = Camera.main.transform.eulerAngles.y + 90;
 			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
 			Quaternion camRotation = Quaternion.AngleAxis(camAngle,Vector3.up);
 			Quaternion inputRotation = Quaternion.AngleAxis(inputAngle,Vector3.up);
@@ -101,9 +102,9 @@ public class Player : MonoBehaviour {
 
 		// Make the player move forward now that they are tangent to the ground
 		if (inputVector.magnitude > 0.1f) {
-			_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
+			// _rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
 		}
-	
+
 		// "Gravity" (move towards the hill)
 		_rigid.AddForce(-currentNormal * (20.0f * 60.0f) * Time.deltaTime,ForceMode.Acceleration);
 	}
