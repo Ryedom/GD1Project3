@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GhostSpawn : MonoBehaviour {
 
@@ -25,6 +26,7 @@ public class GhostSpawn : MonoBehaviour {
 		}
 		//print ("Calling Invoke");
 		InvokeRepeating ("Spawn", spawnrate, spawnrate);
+
 	}
 	
 	// Update is called once spawnrate
@@ -35,4 +37,17 @@ public class GhostSpawn : MonoBehaviour {
 		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position- ghost_pos);
 		Instantiate (ghost, ghost_pos, ghost_rotation);
 	}
+
+	void OnCollisionEnter(Collision c) {
+
+		if (c.collider.gameObject.tag != "Terrain") {
+			print (c.collider.gameObject.tag);
+		}
+
+		if (c.collider.gameObject.tag == "Ghost") {
+			print ("Collision!");
+			SceneManager.LoadScene ("GameOver");
+		}
+	}
 }
+

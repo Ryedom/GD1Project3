@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - Bullet
+  - Ghost
   layers:
   - Default
   - TransparentFX
