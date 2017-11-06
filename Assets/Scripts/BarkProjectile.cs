@@ -6,6 +6,8 @@ public class BarkProjectile : MonoBehaviour {
 	[SerializeField]
 	float _lifetime;
 	float _lifeTimer;
+	public float _barkSpeed;
+	//public float _falloffAngle;
 
 	void Start () {
 		_lifeTimer = _lifetime;
@@ -17,6 +19,8 @@ public class BarkProjectile : MonoBehaviour {
 		if (_lifeTimer < 0.0f) {
 			GameObject.Destroy(gameObject);
 		}
-		transform.position += -transform.right;
+
+		transform.position += transform.forward * _barkSpeed;
+
 	}
 }

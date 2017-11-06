@@ -309,7 +309,7 @@ Transform:
   m_LocalScale: {x: 55.008327, y: 55.008316, z: 55.008316}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: -14.961}
 --- !u!1 &549216758
 GameObject:
@@ -343,7 +343,6 @@ MonoBehaviour:
     type: 2}
   _dog: {fileID: 1596150496}
   _barkLength: 0.25
-  _barkOffset: {x: 0, y: 0, z: 0}
   _playerSpeed: 5
 --- !u!54 &549216760
 Rigidbody:
@@ -426,7 +425,6 @@ MonoBehaviour:
     type: 2}
   _dog: {fileID: 0}
   _barkLength: 0.25
-  _barkOffset: {x: 0, y: 0, z: 0}
   _playerSpeed: 5
 --- !u!136 &786891657
 CapsuleCollider:
@@ -464,7 +462,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 3.4028235e+38
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -559,17 +557,6 @@ Prefab:
     - target: {fileID: 4916362320420952, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
       propertyPath: m_RootOrder
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024146526933814, guid: 1963561cc0f054b59b3c12c6e558c0fd,
-        type: 2}
-      propertyPath: ghost
-      value: 
-      objectReference: {fileID: 1242519237364642, guid: e1ec3e87317754be3a43b2f8e2142993,
-        type: 2}
-    - target: {fileID: 114024146526933814, guid: 1963561cc0f054b59b3c12c6e558c0fd,
-        type: 2}
-      propertyPath: spawnrate
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
@@ -835,8 +822,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.76, y: 5.37, z: 5.02}
-  m_Center: {x: 0, y: 0, z: 0.6}
+  m_Size: {x: 5.26, y: 5.37, z: 3}
+  m_Center: {x: -1.85, y: 0, z: 0}
 --- !u!1 &1698962315
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +948,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4145906224166796, guid: 80e40ffa60a8e4678a35fb7303c7a212, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 136897042337954958, guid: 80e40ffa60a8e4678a35fb7303c7a212,
         type: 2}
@@ -990,12 +977,6 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -0.27
       objectReference: {fileID: 0}
-    - target: {fileID: 114498808605133634, guid: 80e40ffa60a8e4678a35fb7303c7a212,
-        type: 2}
-      propertyPath: _barkPrefab
-      value: 
-      objectReference: {fileID: 1103529015795086, guid: fcb5998e8a5c943c1859b841b6242187,
-        type: 2}
     m_RemovedComponents:
     - {fileID: 136897042337954958, guid: 80e40ffa60a8e4678a35fb7303c7a212, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 80e40ffa60a8e4678a35fb7303c7a212, type: 2}

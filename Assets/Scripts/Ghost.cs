@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 	Rigidbody _rigid;
-	GameObject _player;
+	public GameObject _player;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
 	Quaternion _rotationPlane = Quaternion.identity;
@@ -12,7 +12,7 @@ public class Ghost : MonoBehaviour {
 
 	void Start() {
 		_rigid = GetComponent<Rigidbody>();
-		_player = GameObject.FindGameObjectWithTag("Player");
+		//_player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	void Update() {
@@ -20,6 +20,8 @@ public class Ghost : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+
+		//MOVEMENT CODE
 		// Find the closest normal to the ground (if possible)
 		if (Physics.Raycast(transform.position,-_normal,out _normalHit,1.5f,LayerMask.NameToLayer("Ghost"))) {
 			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
@@ -56,5 +58,15 @@ public class Ghost : MonoBehaviour {
 
 		// "Gravity" (move towards the hill)
 		_rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
+		//END MOVEMENT CODE
+
+	}
+	void OnTriggerEnter (Collider c) {
+		//print ("Hello?");
+		if (c.gameObject.tag == "Bullet") {
+			print ("Collision!");
+			Destroy(c.gameObject);
+			Destroy(gameObject);
+		}
 	}
 }
