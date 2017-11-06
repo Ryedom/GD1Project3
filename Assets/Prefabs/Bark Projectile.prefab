@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23134521821083124}
   - component: {fileID: 114317070981132626}
   m_Layer: 2
-  m_Name: Bark Projectile_old
+  m_Name: Bark Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
