@@ -64,7 +64,7 @@ public class Ghost : MonoBehaviour {
 	void OnTriggerEnter (Collider c) {
 		//print ("Hello?");
 		if (c.gameObject.tag == "Bullet") {
-			print ("Collision!");
+			//print ("Collision!");
 			Destroy(c.gameObject);
 			Destroy(gameObject);
 		}

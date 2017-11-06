@@ -3,7 +3,7 @@ guid: 4d217410f70af41218d142daf9e051aa
 timeCreated: 1509728276
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: Back
     100002: back1
@@ -238,37 +238,10 @@ ModelImporter:
     13700008: doggo:Main_Body_Mesh
     13700010: doggo:nose1
     13700012: doggo:right_eye
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: doggo_collar
-    second: {fileID: 2100000, guid: d22b5020e38214abebca7ef0f0d36298, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: doggo_eyes
-    second: {fileID: 2100000, guid: 55ccce5f37e804c58bf73f42d730464a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: doggo_fur
-    second: {fileID: 2100000, guid: 05737b866b5734222b3dd3d75225d3e7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: doggo_nose
-    second: {fileID: 2100000, guid: 3e59f6ccc53224ee7a108dae5d1669ce, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: e40b9c446622640c0ab393d54db2fee1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -281,7 +254,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -294,7 +266,7 @@ ModelImporter:
       name: Walk_Dog
       takeName: Walk_Dog
       firstFrame: 1
-      lastFrame: 14
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

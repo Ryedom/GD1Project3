@@ -40,12 +40,12 @@ public class GhostSpawn : MonoBehaviour {
 
 	void OnCollisionEnter(Collision c) {
 
-		if (c.collider.gameObject.tag != "Terrain") {
-			print (c.collider.gameObject.tag);
-		}
+		//if (c.collider.gameObject.tag != "Terrain") {
+			//print (c.collider.gameObject.tag);
+		//}
 
 		if (c.collider.gameObject.tag == "Ghost") {
-			print ("Collision!");
+			print ("You Lost!");
 			SceneManager.LoadScene ("GameOver");
 		}
 	}
