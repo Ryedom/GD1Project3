@@ -17,6 +17,6 @@ public class BarkProjectile : MonoBehaviour {
 		if (_lifeTimer < 0.0f) {
 			GameObject.Destroy(gameObject);
 		}
-		transform.position += transform.rotation * Vector3.forward;
+		transform.position += -transform.right;
 	}
 }
