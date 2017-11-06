@@ -23,7 +23,7 @@ public class GhostSpawn : MonoBehaviour {
 			Vector3 temp = new Vector3 (x, y, z);
 			spawnpoints.Add(temp);
 		}
-		print ("Calling Invoke");
+		//print ("Calling Invoke");
 		InvokeRepeating ("Spawn", spawnrate, spawnrate);
 	}
 	
