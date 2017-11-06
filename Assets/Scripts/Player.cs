@@ -10,10 +10,13 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	float _barkLength;
 	[SerializeField]
+	Vector3 _barkOffset;
+	[SerializeField]
 	float _playerSpeed = 5.0f;
 	Rigidbody _rigid;
 	Transform _model;
 	RaycastHit _normalHit;
+	Vector3 _normal = Vector3.up;
 	Vector2 inputVector;
 
 	Quaternion _rotationTurn = Quaternion.identity; // Rotation of the player turning
@@ -27,7 +30,7 @@ public class Player : MonoBehaviour {
 		_barkTimer = _barkLength;
 	}
 
-	void Update () {
+	void Update() {
 		if (Input.GetKey(KeyCode.Escape))
 			Application.Quit();
 		if (Input.GetKey(KeyCode.R))
@@ -44,7 +47,7 @@ public class Player : MonoBehaviour {
 
 		// Bark if pressed
 		if (Input.GetButtonDown("Jump") && _canBark) {
-			GameObject.Instantiate(_barkPrefab,transform.position,transform.rotation);
+			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation,transform);
 			_canBark = false;
 			_barkTimer = _barkLength;
 		}
@@ -54,12 +57,13 @@ public class Player : MonoBehaviour {
 		Animator dog_animator = _dog.GetComponent<Animator> ();
 		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();
 		// Keep track of the current normal (by default it's world up)
-		Vector3 currentNormal = Vector3.up;
+
 		// Find the closest normal to the ground
-		if (Physics.Raycast(transform.position,-transform.position.normalized,out _normalHit,1.5f,LayerMask.NameToLayer("Player"))) {
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,LayerMask.NameToLayer("Player"))) {
 			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
-				currentNormal = _normalHit.normal;
+				_normal = _normalHit.normal;
 		}
+		else _normal = Vector3.up;
 
 		Vector2 rawInputVector = inputVector;
 		inputVector.Normalize();
@@ -73,7 +77,7 @@ public class Player : MonoBehaviour {
 					dog_animator.SetBool ("Walking", true);
 			}
 
-			float camAngle = Camera.main.transform.eulerAngles.y + 90;
+			float camAngle = Camera.main.transform.eulerAngles.y;
 			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
 			Quaternion camRotation = Quaternion.AngleAxis(camAngle,Vector3.up);
 			Quaternion inputRotation = Quaternion.AngleAxis(inputAngle,Vector3.up);
@@ -82,13 +86,14 @@ public class Player : MonoBehaviour {
 			Vector3 inputUp = Vector3.up;
 			Vector3 inputForward = transform.forward;
 
-			Quaternion playerFacing = SnapTangents(ref inputRight, ref inputUp, ref inputForward);
+			Quaternion playerFacing = Tools.SnapTangents(ref inputRight, ref inputUp, ref inputForward);
 			// Flip the facing vector if going more than 90 degrees around (avoid that if possible though)
-			if (Vector3.Dot(Vector3.up,currentNormal) < 0.0f)
+			if (Vector3.Dot(Vector3.up,_normal) < 0.0f)
 				playerFacing = Quaternion.Inverse(playerFacing);
 
 			_rotationTurn = camRotation * inputRotation * Quaternion.Inverse(playerFacing);
-			transform.rotation *= _rotationTurn;
+			transform.rotation = Quaternion.RotateTowards(transform.rotation,transform.rotation * _rotationTurn, 10.0f);
+			//transform.rotation *= _rotationTurn;
 		}
 		else {
 			inputVector = Vector2.zero;
@@ -97,51 +102,25 @@ public class Player : MonoBehaviour {
 
 		// Make the player be tangent to the ground below
 		Vector3 right = transform.right;
-		Vector3 up = currentNormal;
+		Vector3 up = _normal;
 		Vector3 forward = transform.forward;
 
-		_rotationPlane = SnapTangents(ref right,ref up,ref forward);
+		_rotationPlane = Tools.SnapTangents(ref right,ref up,ref forward);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation,_rotationPlane,10.0f * 60.0f * Time.deltaTime);
 
 		// Make the player move forward now that they are tangent to the ground
 		if (inputVector.magnitude > 0.1f) {
-			// _rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
+			//_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
 		}
 
 		// "Gravity" (move towards the hill)
-		_rigid.AddForce(-currentNormal * (20.0f * 60.0f) * Time.deltaTime,ForceMode.Acceleration);
-	}
-
-	Quaternion SnapTangents(ref Vector3 Right, ref Vector3 Up, ref Vector3 Forward) {
-		// Orthonormalize the normal with the player's direction and return the rotation.
-		Vector3.OrthoNormalize(ref Up, ref Forward, ref Right);
-		Matrix4x4 rotationMatrix = Matrix4x4.identity;
-		rotationMatrix.SetColumn(0,Right);
-		rotationMatrix.SetColumn(1,Up);
-		rotationMatrix.SetColumn(2,Forward);
-		return QuaternionFromMatrix(rotationMatrix);//rotationMatrix.rotation;
-	}
-
-	Vector3 TransformVector(Quaternion quat, Vector3 vect) {
-		// Transform a vector (possibly equivalent to just quat * vector in Unity, should test this)
-		Quaternion vectQuat = Quaternion.identity;
-		vectQuat.x = vect.x;
-		vectQuat.y = vect.y;
-		vectQuat.z = vect.z;
-		vectQuat.w = 0.0f;
-		Quaternion result = quat * vectQuat * Quaternion.Inverse(quat);
-		return new Vector3(result.x,result.y,result.z);
+		_rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
 	}
 
 	void OnDrawGizmosSelected() {
 		Gizmos.color = Color.cyan;
 		Gizmos.DrawRay(transform.position,transform.forward * 5.0f);
 		Gizmos.color = Color.magenta;
-		Gizmos.DrawRay(transform.position,TransformVector(_rotationTurn,Vector3.forward) * 5.0f);
-	}
-
-	// Create a quaternion from a matrix. Acts more stable than doing "mat.rotation".
-	public static Quaternion QuaternionFromMatrix(Matrix4x4 m) {
-		return Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));
+		Gizmos.DrawRay(transform.position,(_rotationTurn * Vector3.forward) * 5.0f);
 	}
 }

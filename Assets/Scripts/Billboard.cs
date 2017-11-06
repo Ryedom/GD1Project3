@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostAI : MonoBehaviour {
-
-	void Start () {
-	}
-	
-	// Update is called once per frame
+public class Billboard : MonoBehaviour {
 	void Update () {
-
+		transform.LookAt(Camera.main.transform.position, -Vector3.up);
 	}
 }

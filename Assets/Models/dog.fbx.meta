@@ -243,27 +243,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: doggo_collar
-    second: {fileID: 2100000, guid: b4830b680a11447e9a14845415eedf22, type: 2}
+    second: {fileID: 2100000, guid: d22b5020e38214abebca7ef0f0d36298, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: doggo_eyes
-    second: {fileID: 2100000, guid: de4d8346da69a4aefbcd1cca7bcbc9ed, type: 2}
+    second: {fileID: 2100000, guid: 55ccce5f37e804c58bf73f42d730464a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: doggo_fur
-    second: {fileID: 2100000, guid: e4af1703a32e54f6ea53cd1dedb90ff1, type: 2}
+    second: {fileID: 2100000, guid: 05737b866b5734222b3dd3d75225d3e7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: doggo_nose
-    second: {fileID: 2100000, guid: 46426dc079a1e40bcad52bfbe9e8a56a, type: 2}
+    second: {fileID: 2100000, guid: 3e59f6ccc53224ee7a108dae5d1669ce, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 681249e1e9fa84111ac66ef9f32021e5, type: 2}
+    second: {fileID: 2100000, guid: e40b9c446622640c0ab393d54db2fee1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -303,10 +303,10 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
       heightFromFeet: 0
@@ -317,7 +317,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Idle_Dog
       takeName: Idle_Dog
@@ -331,10 +331,10 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
