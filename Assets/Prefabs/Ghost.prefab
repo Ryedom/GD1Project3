@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf6dd143297c448fb72b4886ab32c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _follow: {fileID: 0}
+  _follow: {fileID: 1549606768749096, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
   _ghostCastMask:
     serializedVersion: 2
     m_Bits: 0

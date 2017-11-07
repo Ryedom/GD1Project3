@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 	Rigidbody _rigid;
-	public Transform _follow;
+	public GameObject _follow;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
 	[SerializeField]
@@ -29,7 +29,7 @@ public class Ghost : MonoBehaviour {
 		}
 		else _normal = Vector3.up;
 
-		Vector3 followDirection = _follow.position - transform.position;
+		Vector3 followDirection = _follow.transform.position - transform.position;
 		followDirection.y = 0;
 		followDirection.Normalize();
 		Quaternion followFacing = Quaternion.LookRotation(followDirection);
