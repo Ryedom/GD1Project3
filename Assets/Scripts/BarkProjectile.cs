@@ -20,7 +20,7 @@ public class BarkProjectile : MonoBehaviour {
 			GameObject.Destroy(gameObject);
 		}
 
-		transform.position += transform.forward * _barkSpeed;
+        transform.Translate(0, 0, _barkSpeed);
 
 	}
 }
