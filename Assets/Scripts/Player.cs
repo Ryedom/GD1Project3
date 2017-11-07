@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
 	Vector3 _barkOffset;
 	[SerializeField]
 	float _playerSpeed = 5.0f;
+	[SerializeField]
+	LayerMask _playerCastMask;
 	Rigidbody _rigid;
 	Transform _model;
     Animator dog_animator;
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour {
 		// Keep track of the current normal (by default it's world up)
 
 		// Find the closest normal to the ground
-		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,LayerMask.NameToLayer("Player"))) {
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,_playerCastMask)) {
 			if (Vector3.Dot(transform.up,_normalHit.normal) > 0.5f)
 				_normal = _normalHit.normal;
 		}

@@ -595,6 +595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1549606768749096, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
+  _ghostCastMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
 --- !u!135 &135948935124332742
 SphereCollider:
   m_ObjectHideFlags: 1

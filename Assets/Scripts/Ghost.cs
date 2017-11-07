@@ -7,6 +7,8 @@ public class Ghost : MonoBehaviour {
 	public GameObject _player;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
+	[SerializeField]
+	LayerMask _ghostCastMask;
 	Quaternion _rotationPlane = Quaternion.identity;
 	Quaternion _rotationTurn = Quaternion.identity;
 
@@ -22,7 +24,7 @@ public class Ghost : MonoBehaviour {
 	void FixedUpdate() {
 		//MOVEMENT CODE
 		// Find the closest normal to the ground (if possible)
-		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,LayerMask.NameToLayer("Ghost"))) {
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,_ghostCastMask)) {
 			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
 				_normal = _normalHit.normal;
 		}
