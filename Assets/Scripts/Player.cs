@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
 
 		// Bark if pressed
 		if (Input.GetButtonDown("Jump") && _canBark) {
-			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation,transform);
+			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
 			_canBark = false;
 			_barkTimer = _barkLength;
 		}
