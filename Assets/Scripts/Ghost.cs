@@ -20,7 +20,6 @@ public class Ghost : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-
 		//MOVEMENT CODE
 		// Find the closest normal to the ground (if possible)
 		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,LayerMask.NameToLayer("Ghost"))) {
