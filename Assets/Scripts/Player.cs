@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
 			}
 
 			float camAngle = Camera.main.transform.eulerAngles.y;
-			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
+//			float camInputAngle = (camAngle - inputAngle + 360.0f) % 360.0f;
 			Quaternion camRotation = Quaternion.AngleAxis(camAngle,Vector3.up);
 			Quaternion inputRotation = Quaternion.AngleAxis(inputAngle,Vector3.up);
 
