@@ -6,7 +6,7 @@ Shader "Skybox/Starry Sky"
     {
         _SkyColor1 ("Sky Color 1", Color) = (0, 0, 0, 0)
         _SkyColor2 ("Sky Color 2", Color) = (0.5, 0.5, 0.5, 0)
-        _SkyColor2 ("Sky Color 2", Color) = (1, 1, 1, 0)
+        _SkyColor3 ("Sky Color 3", Color) = (1, 1, 1, 0)
         _StarColor ("Star Color", Color) = (1, 1, 1, 0)
         _twinkleOffset ("Twinkle Offset", Float) = 0
     }
@@ -57,8 +57,8 @@ Shader "Skybox/Starry Sky"
         float twinkleAngle = dot(float3(0.75f,0.25f,0.50f),normCoord);
         star *= sin(twinkleAngle * 45.0f + _twinkleOffset) + 1.0f;
         #endif
-        star *= clamp(normCoord.x * 3.0f + clamp(normCoord.y,0.0f,1.0f) * 1000.0f,0.0f,1.0f);
-        return (lerp(lerp(_SkyColor1,_SkyColor3,normCoord.x + 0.5f),_SkyColor2,normCoord.y + 0.95f) + (_StarColor * star));
+        star *= clamp(normCoord.x * 3.0f + clamp(normCoord.y,0.0f,1.0f) * 10.0f,0.0f,1.0f);
+        return (lerp(lerp(_SkyColor1,_SkyColor3,normCoord.x + 0.5f),_SkyColor2,normCoord.y + 0.6f) + (_StarColor * star));
         //half4 outputSkyColor = (_SkyColor1 * (1.0f * normCoord.x) + _SkyColor3 * (normCoord.x)) * (normCoord.y) + _SkyColor2 * (1.0f - normCoord.y);
         //return (outputSkyColor + (_StarColor * star));
     }

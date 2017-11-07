@@ -60,9 +60,8 @@ public class Player : MonoBehaviour {
 		// Keep track of the current normal (by default it's world up)
 
 		// Find the closest normal to the ground
-		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,_playerCastMask)) {
-			if (Vector3.Dot(transform.up,_normalHit.normal) > 0.5f)
-				_normal = _normalHit.normal;
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,5.0f,_playerCastMask)) {
+			_normal = _normalHit.normal;
 		}
 		else _normal = Vector3.up;
 
@@ -109,19 +108,16 @@ public class Player : MonoBehaviour {
 		_rotationPlane = Tools.SnapTangents(ref right,ref up,ref forward);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation,_rotationPlane,10.0f * 60.0f * Time.deltaTime);
 
-		// Make the player move forward now that they are tangent to the ground
-		if (inputVector.magnitude > 0.1f) {
-			//_rigid.AddForce(Mathf.Max(7.5f - _rigid.velocity.magnitude, 0.0f) * transform.forward, ForceMode.VelocityChange);
-		}
-
 		// "Gravity" (move towards the hill)
-		_rigid.AddForce(-_normal * 5.0f,ForceMode.Acceleration);
+		_rigid.AddForce(-_normal * 7.5f,ForceMode.Acceleration);
 	}
 
 	void OnDrawGizmosSelected() {
 		Gizmos.color = Color.cyan;
 		Gizmos.DrawRay(transform.position,transform.forward * 5.0f);
 		Gizmos.color = Color.magenta;
-		Gizmos.DrawRay(transform.position,(_rotationTurn * Vector3.forward) * 5.0f);
+		Gizmos.DrawRay(transform.position,transform.right * 5.0f);
+		Gizmos.color = Color.magenta;
+		Gizmos.DrawRay(transform.position,-transform.up * 5.0f);
 	}
 }

@@ -35,19 +35,25 @@ public class GhostSpawn : MonoBehaviour {
 		int i = Random.Range (0, spawnpoint_count);
 		Vector3 ghost_pos = spawnpoints [i];
 		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position- ghost_pos);
-		Instantiate (ghost, ghost_pos, ghost_rotation);
+		GameObject newGhost = Instantiate (ghost, ghost_pos, ghost_rotation);
+		newGhost.GetComponent<Ghost>()._follow = transform;
 	}
 
-	void OnCollisionEnter(Collision c) {
+	void OnTriggerEnter(Collider other) {
 
 		//if (c.collider.gameObject.tag != "Terrain") {
 			//print (c.collider.gameObject.tag);
 		//}
 
-		if (c.collider.gameObject.tag == "Ghost") {
+		if (other.gameObject.tag == "Ghost") {
 			print ("You Lost!");
 			SceneManager.LoadScene ("GameOver");
 		}
+	}
+
+	void OnDrawGizmosSelected() {
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawWireSphere(transform.position,radius);
 	}
 }
 

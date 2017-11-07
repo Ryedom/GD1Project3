@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 	Rigidbody _rigid;
-	public GameObject _player;
+	public Transform _follow;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
 	[SerializeField]
@@ -24,16 +24,15 @@ public class Ghost : MonoBehaviour {
 	void FixedUpdate() {
 		//MOVEMENT CODE
 		// Find the closest normal to the ground (if possible)
-		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,_ghostCastMask)) {
-			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
-				_normal = _normalHit.normal;
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,1000.0f,_ghostCastMask)) {
+			_normal = _normalHit.normal;
 		}
 		else _normal = Vector3.up;
 
-		Vector3 playerDirection = _player.transform.position - transform.position;
-		playerDirection.y = 0;
-		playerDirection.Normalize();
-		Quaternion playerFacing = Quaternion.LookRotation(playerDirection);
+		Vector3 followDirection = _follow.position - transform.position;
+		followDirection.y = 0;
+		followDirection.Normalize();
+		Quaternion followFacing = Quaternion.LookRotation(followDirection);
 
 		Vector3 currentRight = transform.right;
 		Vector3 currentUp = Vector3.up;
@@ -44,7 +43,7 @@ public class Ghost : MonoBehaviour {
 		if (Vector3.Dot(Vector3.up,_normal) < 0.0f)
 			ghostFacing = Quaternion.Inverse(ghostFacing);
 
-		_rotationTurn = playerFacing * Quaternion.Inverse(ghostFacing);
+		_rotationTurn = followFacing * Quaternion.Inverse(ghostFacing);
 		transform.rotation = Quaternion.RotateTowards(transform.rotation,transform.rotation * _rotationTurn, 10.0f);
 
 		// Make the ghost tangent to the ground below
