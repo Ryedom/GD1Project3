@@ -65,7 +65,7 @@ public class Player : MonoBehaviour {
 		}
 		else _normal = Vector3.up;
 
-		Vector2 rawInputVector = inputVector;
+//		Vector2 rawInputVector = inputVector;
 		inputVector.Normalize();
 		float inputAngle = (Vector2.SignedAngle(Vector2.up,inputVector) + 360.0f) % 360.0f;
 		// Movement logic
