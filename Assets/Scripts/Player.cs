@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 
 		// Find the closest normal to the ground
 		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,LayerMask.NameToLayer("Player"))) {
-			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
+			if (Vector3.Dot(transform.up,_normalHit.normal) > 0.5f)
 				_normal = _normalHit.normal;
 		}
 		else _normal = Vector3.up;
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour {
 		}
 
 		// "Gravity" (move towards the hill)
-		// _rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
+		_rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
 	}
 
 	void OnDrawGizmosSelected() {
