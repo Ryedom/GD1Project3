@@ -6,12 +6,19 @@ public class BarkProjectile : MonoBehaviour {
 	[SerializeField]
 	float _lifetime;
 	float _lifeTimer;
-	public float _barkSpeed;
+    [SerializeField]
+	float _barkSpeed;
+    float _barkHeight;
 	//public float _falloffAngle;
 
 	void Start () {
 		_lifeTimer = _lifetime;
-		
+        RaycastHit hit = new RaycastHit();
+        if(!Physics.Raycast(new Ray(transform.position, Vector3.down), out hit, Mathf.Infinity, LayerMask.GetMask("Terrain")))
+        {
+            print("Can't find terrain. Make sure that at least one object is on the terrain layer");
+        }
+        _barkHeight = hit.distance;
 	}
 
 	void Update () {
@@ -20,7 +27,12 @@ public class BarkProjectile : MonoBehaviour {
 			GameObject.Destroy(gameObject);
 		}
 
-		transform.position += transform.forward * _barkSpeed;
+        RaycastHit hit = new RaycastHit();
+        Physics.Raycast(new Ray(transform.position, Vector3.down), out hit, Mathf.Infinity, LayerMask.GetMask("Terrain"));
+        float yDiff = hit.distance - _barkHeight;
+
+
+        transform.Translate(0, -yDiff, _barkSpeed);
 
 	}
 }
