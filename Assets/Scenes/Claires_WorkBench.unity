@@ -574,6 +574,11 @@ Prefab:
       propertyPath: _follow
       value: 
       objectReference: {fileID: 1596150497}
+    - target: {fileID: 20710597199796488, guid: 4526053c955ed405bb590ac51b03ddb7,
+        type: 2}
+      propertyPath: orthographic size
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4526053c955ed405bb590ac51b03ddb7, type: 2}
   m_IsPrefabParent: 0
@@ -713,22 +718,6 @@ Prefab:
     - target: {fileID: 4916362320420952, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114024146526933814, guid: 1963561cc0f054b59b3c12c6e558c0fd,
-        type: 2}
-      propertyPath: ghost
-      value: 
-      objectReference: {fileID: 1319276673333040, guid: 3a7c4623cabb84c05a751c2bf60a01ec,
-        type: 2}
-    - target: {fileID: 114024146526933814, guid: 1963561cc0f054b59b3c12c6e558c0fd,
-        type: 2}
-      propertyPath: spawnrate
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 135363024320253962, guid: 1963561cc0f054b59b3c12c6e558c0fd,
-        type: 2}
-      propertyPath: m_Radius
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114024146526933814, guid: 1963561cc0f054b59b3c12c6e558c0fd,
         type: 2}
