@@ -1,39 +1,20 @@
 fileFormatVersion: 2
-guid: ae2147b5b40ba4c90ba0c0f3119ffed7
-timeCreated: 1510021313
+guid: 80f40d83c5f314b7cae2f65a6e50c70d
+timeCreated: 1510022082
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: basket
-    100002: basket_MeshPart0
-    100004: basket_MeshPart1
-    100006: blanket
-    100008: hill
-    100010: //RootNode
-    100012: wine
-    400000: basket
-    400002: basket_MeshPart0
-    400004: basket_MeshPart1
-    400006: blanket
-    400008: hill
-    400010: //RootNode
-    400012: wine
-    2300000: basket_MeshPart0
-    2300002: basket_MeshPart1
-    2300004: blanket
-    2300006: hill
-    2300008: wine
-    3300000: basket_MeshPart0
-    3300002: basket_MeshPart1
-    3300004: blanket
-    3300006: hill
-    3300008: wine
+    100000: //RootNode
+    100002: hill
+    100004: left
+    400000: //RootNode
+    400002: hill
+    400004: left
+    2000000: left
+    2300000: hill
+    3300000: hill
     4300000: hill
-    4300002: blanket
-    4300004: wine
-    4300006: basket_MeshPart0
-    4300008: basket_MeshPart1
     9500000: //RootNode
   materials:
     importMaterials: 1
