@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 	float _playerSpeed = 5.0f;
 	Rigidbody _rigid;
 	Transform _model;
+    Animator dog_animator;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
 	Vector2 inputVector;
@@ -26,8 +27,9 @@ public class Player : MonoBehaviour {
 
 	void Start () {
 		_rigid = GetComponent<Rigidbody> ();
-		// _model = transform.GetChild(0);
-		_barkTimer = _barkLength;
+        // _model = transform.GetChild(0);
+        dog_animator = _dog.GetComponent<Animator>();
+        _barkTimer = _barkLength;
 	}
 
 	void Update() {
@@ -47,14 +49,11 @@ public class Player : MonoBehaviour {
 
 		// Bark if pressed
 		if (Input.GetButtonDown("Jump") && _canBark) {
-			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation,transform);
+			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
 			_canBark = false;
 			_barkTimer = _barkLength;
 		}
-	}
-
-	void FixedUpdate () {
-		Animator dog_animator = _dog.GetComponent<Animator> ();
+	
 		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();
 		// Keep track of the current normal (by default it's world up)
 
@@ -114,7 +113,7 @@ public class Player : MonoBehaviour {
 		}
 
 		// "Gravity" (move towards the hill)
-		_rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
+		// _rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
 	}
 
 	void OnDrawGizmosSelected() {

@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f576f7f3d59d486fb82e755a5b4c0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghost: {fileID: 1919316010148922, guid: 85a364f7e7aef484fabe6218bcfe68e7, type: 2}
-  spawnrate: 0.5
-  radius: 50
+  ghost: {fileID: 1319276673333040, guid: 3a7c4623cabb84c05a751c2bf60a01ec, type: 2}
+  spawnrate: 5
+  radius: 60
   spawnpoint_count: 10
 --- !u!135 &135363024320253962
 SphereCollider:
