@@ -115,7 +115,7 @@ public class Player : MonoBehaviour {
 		}
 
 		// "Gravity" (move towards the hill)
-		_rigid.AddForce(-_normal * 20.0f,ForceMode.Acceleration);
+		_rigid.AddForce(-_normal * 5.0f,ForceMode.Acceleration);
 	}
 
 	void OnDrawGizmosSelected() {
