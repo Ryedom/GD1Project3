@@ -23,7 +23,7 @@ public class Ghost : MonoBehaviour {
 
 		//MOVEMENT CODE
 		// Find the closest normal to the ground (if possible)
-		if (Physics.Raycast(transform.position,-_normal,out _normalHit,1.5f,LayerMask.NameToLayer("Ghost"))) {
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,2.5f,LayerMask.NameToLayer("Ghost"))) {
 			if (Vector3.Dot(transform.position.normalized,_normalHit.normal) > 0.5f)
 				_normal = _normalHit.normal;
 		}
