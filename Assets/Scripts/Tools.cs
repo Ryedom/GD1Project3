@@ -13,17 +13,6 @@ public static class Tools {
 		return QuaternionFromMatrix(rotationMatrix);//rotationMatrix.rotation;
 	}
 
-	public static Vector3 TransformVector(Quaternion quat, Vector3 vect) {
-		// Transform a vector (possibly equivalent to just quat * vector in Unity, should test this)
-		Quaternion vectQuat = Quaternion.identity;
-		vectQuat.x = vect.x;
-		vectQuat.y = vect.y;
-		vectQuat.z = vect.z;
-		vectQuat.w = 0.0f;
-		Quaternion result = quat * vectQuat * Quaternion.Inverse(quat);
-		return new Vector3(result.x,result.y,result.z);
-	}
-
 	// Create a quaternion from a matrix. Acts more stable than doing "mat.rotation".
 	public static Quaternion QuaternionFromMatrix(Matrix4x4 m) {
 		return Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));

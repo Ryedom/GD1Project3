@@ -3302,6 +3302,9 @@ MonoBehaviour:
   _barkLength: 0.25
   _barkOffset: {x: 0, y: 0, z: 0}
   _playerSpeed: 5
+  _playerCastMask:
+    serializedVersion: 2
+    m_Bits: 4294967039
 --- !u!136 &136897042337954958
 CapsuleCollider:
   m_ObjectHideFlags: 1
