@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4018071250381432}
   - component: {fileID: 20710597199796488}
   - component: {fileID: 124798684313107592}
+  - component: {fileID: 114046541624060542}
   m_Layer: 0
   m_Name: Mini_Camera
   m_TagString: Untagged
@@ -61,7 +62,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 160
+  orthographic size: 80
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -76,6 +77,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!114 &114046541624060542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275823187562924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c11e9a478d74e14b0704a71fbb8fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _follow: {fileID: 0}
 --- !u!124 &124798684313107592
 Behaviour:
   m_ObjectHideFlags: 1
