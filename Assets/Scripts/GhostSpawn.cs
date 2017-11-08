@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GhostSpawn : MonoBehaviour {
 
-	public GameObject ghost;
+	public GameObject[] ghosts;
 	public float spawnrate = 5.0f;
 	public float radius = 100;
 	public int spawnpoint_count = 10;
@@ -96,7 +96,7 @@ public class GhostSpawn : MonoBehaviour {
 		int i = Random.Range (0, spawnpoint_count);
 		Vector3 ghost_pos = spawnpoints [i];
 		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position- ghost_pos);
-		var newGhost = Instantiate (ghost, ghost_pos, ghost_rotation);
+		var newGhost = Instantiate (ghosts[Random.Range(0, ghosts.Length)], ghost_pos, ghost_rotation);
 		newGhost.transform.parent = gameObject.transform;
 	}
 
