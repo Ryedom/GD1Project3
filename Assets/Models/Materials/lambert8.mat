@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Skybox
-  m_Shader: {fileID: 4800000, guid: b2e15f07a200f4ec4991412b137cfbc8, type: 3}
+  m_Name: lambert8
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -71,13 +71,6 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _twinkleOffset: 5.4031057
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 0, b: 0.5019608, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SkyColor1: {r: 0.88836604, g: 0.45982987, b: 0.034130894, a: 1}
-    - _SkyColor2: {r: 0.013088689, g: 0.032859035, b: 0.5120969, a: 1}
-    - _SkyColor3: {r: 0.0014101947, g: 0.067424804, b: 0.26823837, a: 0}
-    - _StarColor: {r: 1, g: 1, b: 0, a: 1}

@@ -71,14 +71,9 @@ public class Ghost : MonoBehaviour {
 	void OnTriggerEnter (Collider c) {
 		//print ("Hello?");
 		if (c.gameObject.tag == "Bullet") {
-<<<<<<< HEAD
             //print ("Collision!");
-=======
 			//print ("Collision!");
-			_poolObj.Kill();
 			c.gameObject.GetComponent<PoolObject>().Kill();
->>>>>>> ded4564736b6c71252804c812e142f06a8f7c7a4
-			Destroy(c.gameObject);
             life -= 1;
             StartCoroutine(FadeOut());
 		}
@@ -88,6 +83,6 @@ public class Ghost : MonoBehaviour {
     {
         GetComponent<FadeObjectInOut>().FadeOut();
         yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+		_poolObj.Kill();
     }
 }

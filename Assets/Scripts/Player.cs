@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	GameObject _barkPrefab;
 	[SerializeField]
+	GameObjectPool _barkPool;
+	[SerializeField]
 	GameObject _dog;
 	[SerializeField]
 	float _barkLength;
@@ -16,7 +18,7 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	LayerMask _playerCastMask;
 	[SerializeField]
-	AudioClip[] barksounds;
+	AudioClip[] _barkSounds;
 
 	Rigidbody _rigid;
 	Transform _model;
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour {
 	bool _canBark = true;
 	float _barkTimer;
 
-	AudioSource audiosource;
+	AudioSource _audioSource;
 
 	[SerializeField]
 	float currentenergy;
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour {
         // _model = transform.GetChild(0);
         dog_animator = _dog.GetComponent<Animator>();
         _barkTimer = _barkLength;
-		audiosource = GetComponent<AudioSource>();
+		_audioSource = GetComponent<AudioSource>();
 		currentenergy = maxenergy;
 	}
 
@@ -67,12 +69,15 @@ public class Player : MonoBehaviour {
 
 		// Bark if pressed
 		if (Input.GetButtonDown("Jump") && _canBark && (currentenergy - barkcost >= 0)) {
-			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
+			GameObject newBark = _barkPool.Get(); //GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
+			newBark.transform.position = transform.position + transform.rotation * _barkOffset;
+			newBark.transform.rotation = transform.rotation;
+			newBark.GetComponent<PoolObject>().Activate();
 			_canBark = false;
 			_barkTimer = _barkLength;
 
 			//play a random bark sound
-			audiosource.PlayOneShot(barksounds[Random.Range(0, barksounds.Length)], 0.5f);
+			_audioSource.PlayOneShot(_barkSounds[Random.Range(0, _barkSounds.Length)], 0.5f);
 
 			//deplete energy
 			currentenergy -= barkcost;
