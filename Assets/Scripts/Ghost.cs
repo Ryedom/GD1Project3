@@ -13,6 +13,9 @@ public class Ghost : MonoBehaviour {
 	Quaternion _rotationPlane = Quaternion.identity;
 	Quaternion _rotationTurn = Quaternion.identity;
 
+	[SerializeField]
+	int life;
+
 	void Start() {
 		_rigid = GetComponent<Rigidbody>();
 		_poolObj = GetComponent<PoolObject>();
@@ -20,7 +23,9 @@ public class Ghost : MonoBehaviour {
 	}
 	
 	void Update() {
-
+		if (life <= 0) {
+			Destroy(gameObject);
+		}
 	}
 
 	void FixedUpdate() {
@@ -67,8 +72,13 @@ public class Ghost : MonoBehaviour {
 		//print ("Hello?");
 		if (c.gameObject.tag == "Bullet") {
 			//print ("Collision!");
+<<<<<<< HEAD
 			_poolObj.Kill();
 			c.gameObject.GetComponent<PoolObject>().Kill();
+=======
+			Destroy(c.gameObject);
+			life -= 1;
+>>>>>>> 4a00de17fd33961aaceb9e2689e3dd98f2ef99c8
 		}
 	}
 }
