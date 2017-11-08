@@ -53,9 +53,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghost: {fileID: 1319276673333040, guid: 3a7c4623cabb84c05a751c2bf60a01ec, type: 2}
-  spawnrate: 5
+  spawnrate: 6
   radius: 60
   spawnpoint_count: 10
+  timer: {fileID: 0}
+  wave_note: {fileID: 0}
 --- !u!135 &135363024320253962
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -63,7 +65,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549606768749096}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 8

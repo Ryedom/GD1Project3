@@ -99,13 +99,13 @@ public class GhostSpawn : MonoBehaviour {
 
 
 	//Check lose condition
-	void OnCollisionEnter(Collision c) {
+	void OnTriggerEnter(Collider c) {
 
 		//if (c.collider.gameObject.tag != "Terrain") {
 			//print (c.collider.gameObject.tag);
 		//}
 
-		if (c.collider.gameObject.tag == "Ghost") {
+		if (c.gameObject.tag == "Ghost") {
 			print ("You Lost!");
 			SceneManager.LoadScene ("GameOver");
 		}
