@@ -64,9 +64,16 @@ public class Ghost : MonoBehaviour {
 	void OnTriggerEnter (Collider c) {
 		//print ("Hello?");
 		if (c.gameObject.tag == "Bullet") {
-			//print ("Collision!");
+            //print ("Collision!");
 			Destroy(c.gameObject);
-			Destroy(gameObject);
+            StartCoroutine(FadeOut());
 		}
 	}
+
+    IEnumerator FadeOut()
+    {
+        GetComponent<FadeObjectInOut>().FadeOut();
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
 }

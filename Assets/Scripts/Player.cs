@@ -72,7 +72,7 @@ public class Player : MonoBehaviour {
 			_barkTimer = _barkLength;
 
 			//play a random bark sound
-			audiosource.PlayOneShot(barksounds[Random.Range(0, barksounds.Length)], 0.5f);
+			//audiosource.PlayOneShot(barksounds[Random.Range(0, barksounds.Length)], 0.5f);
 
 			//deplete energy
 			currentenergy -= barkcost;
