@@ -14,18 +14,22 @@ public class Ghost : MonoBehaviour {
 	Quaternion _rotationTurn = Quaternion.identity;
 
 	[SerializeField]
+	int _defaultLife = 1;
+	[SerializeField]
 	int life;
 
 	void Start() {
 		_rigid = GetComponent<Rigidbody>();
 		_poolObj = GetComponent<PoolObject>();
+		_poolObj.OnActivate += Activate;
+		life = _defaultLife;
 		//_player = GameObject.FindGameObjectWithTag("Player");
 	}
-	
-	void Update() {
-		if (life <= 0) {
-			Destroy(gameObject);
-		}
+
+	void Activate() {
+		transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+		GetComponent<FadeObjectInOut>().FadeIn();
+		life = _defaultLife;
 	}
 
 	void FixedUpdate() {
@@ -72,17 +76,18 @@ public class Ghost : MonoBehaviour {
 		//print ("Hello?");
 		if (c.gameObject.tag == "Bullet") {
             //print ("Collision!");
-			//print ("Collision!");
 			c.gameObject.GetComponent<PoolObject>().Kill();
             life -= 1;
-            StartCoroutine(FadeOut());
+			if (life <= 0)
+            	StartCoroutine(FadeOut());
 		}
 	}
 
     IEnumerator FadeOut()
     {
+		transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
         GetComponent<FadeObjectInOut>().FadeOut();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 		_poolObj.Kill();
     }
 }

@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 114248999215177474}
   - component: {fileID: 135948935124332742}
   - component: {fileID: 114052734143523966}
+  - component: {fileID: 114676328009713784}
   m_Layer: 12
   m_Name: Ghost
   m_TagString: Ghost
@@ -641,7 +642,23 @@ MonoBehaviour:
   _ghostCastMask:
     serializedVersion: 2
     m_Bits: 256
+  _defaultLife: 1
   life: 1
+--- !u!114 &114676328009713784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319276673333040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c2c98d4654ca24bad8ac135cd2beb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDelay: 0
+  fadeTime: 1
+  fadeInOnStart: 1
+  fadeOutOnStart: 0
 --- !u!135 &135948935124332742
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -717,7 +734,7 @@ ParticleSystem:
   simulationSpeed: 1
   stopAction: 0
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -773,7 +790,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2

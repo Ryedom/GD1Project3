@@ -42,6 +42,8 @@ public class Player : MonoBehaviour {
 	float recoverrate;
 	[SerializeField]
 	float barkcost;
+	[SerializeField]
+	UnityEngine.UI.Image _energyBarImage;
 
 	void Start () {
 		_rigid = GetComponent<Rigidbody> ();
@@ -90,6 +92,8 @@ public class Player : MonoBehaviour {
 			float recoveramount = Mathf.Pow(currentenergy * recoverrate / maxenergy, recoverrate / 3);
 			currentenergy += recoveramount;
 		}
+
+		_energyBarImage.materialForRendering.SetFloat("_FillLevel",currentenergy / maxenergy);
 	
 		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();
 		// Keep track of the current normal (by default it's world up)

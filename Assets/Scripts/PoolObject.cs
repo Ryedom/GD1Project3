@@ -14,8 +14,8 @@ public class PoolObject : MonoBehaviour {
 	}
 
 	public void Activate() {
-		OnActivate();
 		gameObject.SetActive(true);
+		OnActivate();
 	}
 	
 	public void Kill() {

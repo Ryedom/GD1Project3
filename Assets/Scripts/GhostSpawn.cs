@@ -11,10 +11,11 @@ public class GhostSpawn : MonoBehaviour {
 	public float spawnrate = 5.0f;
 	public float radius = 100;
 	public int spawnpoint_count = 10;
+	public float waveInitTime = 99.0f;
 	public GameObject timer;
 	public GameObject wave_note;
 	List<Vector3> spawnpoints = new List<Vector3>();
-	float timeLeft = 120.0f;
+	float timeLeft;
 	int level = 1;
 	int levelStage = 1;
 	int remaining_ghosts = 0;
@@ -37,7 +38,7 @@ public class GhostSpawn : MonoBehaviour {
 			spawnpoints.Add(temp);
 		}
 
-
+		timeLeft = waveInitTime;
 		//print ("Calling Invoke");
 		InvokeRepeating ("Spawn", spawnrate, spawnrate);
 
@@ -48,7 +49,7 @@ public class GhostSpawn : MonoBehaviour {
 		timeLeft -= Time.deltaTime;
 
 		Text timertext = timer.gameObject.GetComponent<Text> ();
-		timertext.text = "Time Until Next Wave: " + Mathf.Round(timeLeft);
+		timertext.text = "Time Left: " + Mathf.Max(Mathf.Round(timeLeft),0);
 		Text wavetext = wave_note.gameObject.GetComponent<Text> ();
 		wavetext.text = "Wave " + level;
 
@@ -73,13 +74,13 @@ public class GhostSpawn : MonoBehaviour {
 			CancelInvoke ("Spawn");
 			if (level == 3) {
 				if (GameObject.FindGameObjectsWithTag("Ghost").Length == 0) {
-					SceneManager.LoadScene ("WinState");
+					SceneManager.LoadScene("WinState");
 				}
 			} else {
 				level += 1;
-				timeLeft = 120.0f;
+				timeLeft = waveInitTime;
 				spawnrate -= 1;
-				InvokeRepeating ("Spawn", spawnrate, spawnrate);
+				InvokeRepeating("Spawn", spawnrate, spawnrate);
 			}
 		}
 
@@ -100,10 +101,6 @@ public class GhostSpawn : MonoBehaviour {
 
 	//Check lose condition
 	void OnTriggerEnter(Collider c) {
-		//if (c.collider.gameObject.tag != "Terrain") {
-			//print (c.collider.gameObject.tag);
-		//}
-
 		if (c.gameObject.tag == "Ghost") {
 			print ("You Lost!");
 			SceneManager.LoadScene ("GameOver");

@@ -629,6 +629,7 @@ MonoBehaviour:
   _ghostCastMask:
     serializedVersion: 2
     m_Bits: 256
+  _defaultLife: 2
   life: 2
 --- !u!135 &135948935124332742
 SphereCollider:
