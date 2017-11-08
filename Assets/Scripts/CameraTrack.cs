@@ -4,37 +4,52 @@ using UnityEngine;
 
 public class CameraTrack : MonoBehaviour {
 
-    public GameObject target;
-    AnimationCurve ease;
-    public float accelTime;
+    [SerializeField]
+    bool multiView;
+    [SerializeField]
+    GameObject target;
+    GameObject camera;
+    [SerializeField]
+    float accelTime;
+    [SerializeField]
+    float cameraOffset;
+    [SerializeField]
+    float cameraOverlap;
     float startTime;
-    public float maxLead;
+    [SerializeField]
+    float maxLead;
     float lead;
     float radius;
     Rigidbody targetBod;
-    bool starting;
+
 
 	// Use this for initialization
 	void Start () {
         targetBod = target.GetComponent<Rigidbody>();
-        print(targetBod != null);
-        starting = false;
         lead = 0;
-        ease = AnimationCurve.EaseInOut(0f, 0f, accelTime, maxLead);
+        camera = GameObject.Find("Main Camera");
 	}
 
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
+        // print(targetBod.velocity);
         radius = Vector3.Distance(transform.position, target.transform.position);
-        // transform.LookAt(target.transform.position + (targetBod != null ? targetBod.velocity * lead : Vector3.zero), Vector3.up);
-        // I'm sorry for nesting a ternary expressoin, it made sense at the time
-        if(Input.GetKeyDown("w") || Input.GetKeyDown("s")) {
-            starting = true;
+        if(targetBod.velocity == Vector3.zero) {
             startTime = Time.time;
         }
 
-        lead = ease.Evaluate(Time.time - startTime) * (radius / 100);
+        lead = Mathf.SmoothStep(0, maxLead, (Time.time - startTime) / accelTime) * (radius / 100);
         transform.rotation = Quaternion.LookRotation((targetBod != null ? (target.transform.position + targetBod.velocity * lead) : target.transform.position) - transform.position, Vector3.up);
-        // print(targetBod.velocity);
+        if(!multiView || radius < cameraOffset * transform.lossyScale.x) {
+            camera.transform.localPosition = new Vector3(0f, 0f, -cameraOffset + cameraOverlap);
+        }
+        else {
+            camera.transform.localPosition = new Vector3(0f, 0f, cameraOffset - cameraOverlap);
+        }
 	}
+
+    public void LateUpdate()
+    {
+        // print(targetBod.velocity);
+    }
 }

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Terrain
+  - Bullet
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -13,11 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Terrain
+  - Player
+  - Minimap
+  - InvisibleWall
+  - Ghost
   - 
   - 
   - 

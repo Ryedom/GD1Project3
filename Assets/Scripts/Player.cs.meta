@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3bedd7081a7ae4942ae70e3a8cca855d
+timeCreated: 1509938420
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _barkPrefab: {fileID: 1951111624937694, guid: f3d58bb5bf1cb4a88b8305d3a1d88cda,
+      type: 2}
+  - _dog: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
