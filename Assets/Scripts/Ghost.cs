@@ -12,13 +12,18 @@ public class Ghost : MonoBehaviour {
 	Quaternion _rotationPlane = Quaternion.identity;
 	Quaternion _rotationTurn = Quaternion.identity;
 
+	[SerializeField]
+	int life;
+
 	void Start() {
 		_rigid = GetComponent<Rigidbody>();
 		//_player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	void Update() {
-
+		if (life <= 0) {
+			Destroy(gameObject);
+		}
 	}
 
 	void FixedUpdate() {
@@ -66,7 +71,7 @@ public class Ghost : MonoBehaviour {
 		if (c.gameObject.tag == "Bullet") {
 			//print ("Collision!");
 			Destroy(c.gameObject);
-			Destroy(gameObject);
+			life -= 1;
 		}
 	}
 }

@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 114248999215177474}
   - component: {fileID: 135948935124332742}
   m_Layer: 12
-  m_Name: Ghost
+  m_Name: BiggerGhost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ Transform:
   m_GameObject: {fileID: 1319276673333040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.7936, y: 18.7936, z: 18.7936}
+  m_LocalScale: {x: 35, y: 35, z: 35}
   m_Children:
   - {fileID: 4855829428549312}
   - {fileID: 4245597928937276}
@@ -398,8 +398,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652693007467400}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4755180017599660}
   m_Father: {fileID: 4102318221159632}
@@ -629,7 +629,7 @@ MonoBehaviour:
   _ghostCastMask:
     serializedVersion: 2
     m_Bits: 256
-  life: 1
+  life: 2
 --- !u!135 &135948935124332742
 SphereCollider:
   m_ObjectHideFlags: 1
