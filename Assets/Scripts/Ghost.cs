@@ -74,6 +74,7 @@ public class Ghost : MonoBehaviour {
 			//print ("Collision!");
 			_poolObj.Kill();
 			c.gameObject.GetComponent<PoolObject>().Kill();
+			Destroy(c.gameObject);
 			life -= 1;
 		}
 	}
