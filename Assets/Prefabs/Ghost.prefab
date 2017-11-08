@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4106010216027908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012389115180562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: mid_CNTRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4371347707151636}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4424176579411688}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: end_CNTRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 54339795678826650}
   - component: {fileID: 114248999215177474}
   - component: {fileID: 135948935124332742}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ghost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4847649745635954}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: end_CNTRL_offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4023578064074824}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226354182032800}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: joint6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4755180017599660}
   - component: {fileID: 137903991539580964}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body_mesh1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4523909163062392}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: mid_CNTRL_offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4331101433076980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: curve1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4245597928937276}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4170756424450642}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: mid_cluster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4841085803842104}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000911194558568}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: tail_IK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4293026946598618}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
