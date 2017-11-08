@@ -29,6 +29,9 @@ public class GhostSpawn : MonoBehaviour {
 			float x = radius * Mathf.Cos(angle*i) + center.x;
 			float y = center.y;
 			float z = radius * Mathf.Sin(angle*i) + center.z;
+			RaycastHit hit = new RaycastHit();
+	        Physics.Raycast(new Ray(new Vector3(x, y, z), Vector3.down), out hit, Mathf.Infinity, LayerMask.GetMask("Terrain"));
+			y -= (hit.distance - 1);
 			Vector3 temp = new Vector3 (x, y, z);
 			spawnpoints.Add(temp);
 		}
@@ -86,7 +89,7 @@ public class GhostSpawn : MonoBehaviour {
 
 	}
 
-	
+
 	// Spawn function
 	void Spawn () {
 
@@ -111,4 +114,3 @@ public class GhostSpawn : MonoBehaviour {
 		}
 	}
 }
-
