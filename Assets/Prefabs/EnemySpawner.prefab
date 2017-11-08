@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghost: {fileID: 1319276673333040, guid: 3a7c4623cabb84c05a751c2bf60a01ec, type: 2}
-  spawnrate: 6
+  spawnrate: 5
   radius: 60
   spawnpoint_count: 10
   timer: {fileID: 0}

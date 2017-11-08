@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf6dd143297c448fb72b4886ab32c9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _follow: {fileID: 0}
+  _follow: {fileID: 1549606768749096, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
   _ghostCastMask:
     serializedVersion: 2
     m_Bits: 256
@@ -3231,9 +3231,9 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 0
-    ratio: 0
-    light: {fileID: 0}
+    enabled: 1
+    ratio: 1
+    light: {fileID: 108592224696658608, guid: f6e18d1236ad048c296f07fc41b123c4, type: 2}
     randomDistribution: 1
     color: 1
     range: 1
