@@ -145,10 +145,10 @@ public class Player : MonoBehaviour {
 		Vector3 forward = transform.forward;
 
 		_rotationPlane = Tools.SnapTangents(ref right,ref up,ref forward);
-		transform.rotation = Quaternion.RotateTowards(transform.rotation,_rotationPlane,10.0f * 60.0f * Time.deltaTime);
+		transform.rotation = Quaternion.RotateTowards(transform.rotation,_rotationPlane,20.0f * 60.0f * Time.deltaTime);
 
 		// "Gravity" (move towards the hill)
-		_rigid.AddForce(-_normal * 7.5f,ForceMode.Acceleration);
+		_rigid.AddForce(-_normal * 10.0f,ForceMode.Acceleration);
 	}
 
 	void OnDrawGizmosSelected() {

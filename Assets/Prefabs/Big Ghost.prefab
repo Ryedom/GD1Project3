@@ -83,8 +83,10 @@ GameObject:
   - component: {fileID: 54339795678826650}
   - component: {fileID: 114248999215177474}
   - component: {fileID: 135948935124332742}
+  - component: {fileID: 114052734143523966}
+  - component: {fileID: 114676328009713784}
   m_Layer: 12
-  m_Name: BiggerGhost
+  m_Name: Big Ghost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 1319276673333040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 35, y: 35, z: 35}
+  m_LocalScale: {x: 37.5872, y: 37.5872, z: 37.5872}
   m_Children:
   - {fileID: 4855829428549312}
   - {fileID: 4245597928937276}
@@ -398,8 +400,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652693007467400}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755180017599660}
   m_Father: {fileID: 4102318221159632}
@@ -614,6 +616,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114052734143523966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319276673333040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e490514162e074841b58cca2f326c780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114248999215177474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -630,7 +643,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _defaultLife: 2
-  life: 2
+  life: 3
+--- !u!114 &114676328009713784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319276673333040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c2c98d4654ca24bad8ac135cd2beb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDelay: 0
+  fadeTime: 1
+  fadeInOnStart: 1
+  fadeOutOnStart: 0
 --- !u!135 &135948935124332742
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -706,7 +734,7 @@ ParticleSystem:
   simulationSpeed: 1
   stopAction: 0
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -762,7 +790,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -907,7 +935,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 7
+      scalar: 14
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2025,7 +2053,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 12
       minScalar: 0
       maxCurve:
         serializedVersion: 2

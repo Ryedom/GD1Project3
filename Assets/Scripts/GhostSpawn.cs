@@ -8,6 +8,8 @@ public class GhostSpawn : MonoBehaviour {
 	public GameObject ghost;
 	[SerializeField]
 	GameObjectPool _ghostPool;
+	[SerializeField]
+	GameObjectPool _bigGhostPool;
 	public float spawnrate = 5.0f;
 	public float radius = 100;
 	public int spawnpoint_count = 10;
@@ -91,11 +93,17 @@ public class GhostSpawn : MonoBehaviour {
 	void Spawn () {
 		int i = Random.Range (0, spawnpoint_count);
 		Vector3 ghost_pos = spawnpoints [i];
-		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position- ghost_pos);
-		GameObject newGhost = _ghostPool.Get(); //Instantiate (ghost, ghost_pos, ghost_rotation);
-		newGhost.transform.position = ghost_pos;
-		newGhost.transform.rotation = ghost_rotation;
-		newGhost.GetComponent<PoolObject>().Activate();
+		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position - ghost_pos);
+		GameObject newGhost;
+		if (Random.value < 0.1f && level == 3)
+			newGhost = _bigGhostPool.Get();
+		else
+			newGhost = _ghostPool.Get(); //Instantiate (ghost, ghost_pos, ghost_rotation);
+		if (newGhost != null) {
+			newGhost.transform.position = ghost_pos;
+			newGhost.transform.rotation = ghost_rotation;
+			newGhost.GetComponent<PoolObject>().Activate();
+		}
 	}
 
 
