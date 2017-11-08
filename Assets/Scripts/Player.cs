@@ -33,12 +33,22 @@ public class Player : MonoBehaviour {
 	float _barkTimer;
 	AudioSource _audioSource;
 
+	[SerializeField]
+	float currentenergy;
+	[SerializeField]
+	float maxenergy;
+	[SerializeField]
+	float recoverrate;
+	[SerializeField]
+	float barkcost;
+
 	void Start () {
 		_rigid = GetComponent<Rigidbody> ();
         // _model = transform.GetChild(0);
         _dogAnimator = _dog.GetComponent<Animator>();
         _barkTimer = _barkLength;
 		_audioSource = GetComponent<AudioSource>();
+		currentenergy = maxenergy;
 	}
 
 	void Update() {
@@ -57,7 +67,7 @@ public class Player : MonoBehaviour {
 		}
 
 		// Bark if pressed
-		if (Input.GetButtonDown("Jump") && _canBark) {
+		if (Input.GetButtonDown("Jump") && _canBark && (currentenergy - barkcost >= 0)) {
 			PoolObject newBullet = _barkPool.Get().GetComponent<PoolObject>();
 			newBullet.transform.position = transform.position + transform.rotation * _barkOffset;
 			newBullet.transform.rotation = transform.rotation;
@@ -68,6 +78,17 @@ public class Player : MonoBehaviour {
 
 			//play a random bark sound
 			_audioSource.PlayOneShot(_barkSounds[Random.Range(0, _barkSounds.Length)], 0.5f);
+
+			//deplete energy
+			currentenergy -= barkcost;
+		}
+
+		//Recover energy
+		if (currentenergy >= maxenergy) {
+			currentenergy = maxenergy;
+		} else {
+			float recoveramount = Mathf.Pow(currentenergy * recoverrate / maxenergy, recoverrate / 3);
+			currentenergy += recoveramount;
 		}
 	
 		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();

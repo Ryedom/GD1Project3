@@ -30,6 +30,9 @@ public class GhostSpawn : MonoBehaviour {
 			float x = radius * Mathf.Cos(angle*i) + center.x;
 			float y = center.y;
 			float z = radius * Mathf.Sin(angle*i) + center.z;
+			RaycastHit hit = new RaycastHit();
+	        Physics.Raycast(new Ray(new Vector3(x, y, z), Vector3.down), out hit, Mathf.Infinity, LayerMask.GetMask("Terrain"));
+			y -= (hit.distance - 1);
 			Vector3 temp = new Vector3 (x, y, z);
 			spawnpoints.Add(temp);
 		}
@@ -69,13 +72,8 @@ public class GhostSpawn : MonoBehaviour {
 		if (timeLeft <= 0) {
 			CancelInvoke ("Spawn");
 			if (level == 3) {
-				foreach (Transform child in transform) {
-					remaining_ghosts += 1;
-				}
-				if (remaining_ghosts == 0) {
+				if (GameObject.FindGameObjectsWithTag("Ghost").Length == 0) {
 					SceneManager.LoadScene ("WinState");
-				} else {
-					remaining_ghosts = 0;
 				}
 			} else {
 				level += 1;
@@ -87,7 +85,7 @@ public class GhostSpawn : MonoBehaviour {
 
 	}
 
-	
+
 	// Spawn function
 	void Spawn () {
 		int i = Random.Range (0, spawnpoint_count);
@@ -112,4 +110,3 @@ public class GhostSpawn : MonoBehaviour {
 		}
 	}
 }
-
