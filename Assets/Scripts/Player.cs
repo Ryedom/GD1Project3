@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
 	float _playerSpeed = 5.0f;
 	[SerializeField]
 	LayerMask _playerCastMask;
+	[SerializeField]
+	AudioClip[] barksounds;
+
 	Rigidbody _rigid;
 	Transform _model;
     Animator dog_animator;
@@ -27,11 +30,14 @@ public class Player : MonoBehaviour {
 	bool _canBark = true;
 	float _barkTimer;
 
+	AudioSource audiosource;
+
 	void Start () {
 		_rigid = GetComponent<Rigidbody> ();
         // _model = transform.GetChild(0);
         dog_animator = _dog.GetComponent<Animator>();
         _barkTimer = _barkLength;
+		audiosource = GetComponent<AudioSource>();
 	}
 
 	void Update() {
@@ -54,6 +60,9 @@ public class Player : MonoBehaviour {
 			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
 			_canBark = false;
 			_barkTimer = _barkLength;
+
+			//play a random bark sound
+			audiosource.PlayOneShot(barksounds[Random.Range(0, barksounds.Length)], 0.5f);
 		}
 	
 		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();
