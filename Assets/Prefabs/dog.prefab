@@ -1113,6 +1113,7 @@ GameObject:
   - component: {fileID: 54489183436369400}
   - component: {fileID: 114346481396029534}
   - component: {fileID: 65300546044167318}
+  - component: {fileID: 82401753281296854}
   m_Layer: 9
   m_Name: dog
   m_TagString: Player
@@ -3441,6 +3442,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.76, y: 5.37, z: 5.02}
   m_Center: {x: 0, y: 0, z: 0.6}
+--- !u!82 &82401753281296854
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632263415662260}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95816384898543936
 Animator:
   serializedVersion: 3
@@ -3478,6 +3559,14 @@ MonoBehaviour:
   _playerCastMask:
     serializedVersion: 2
     m_Bits: 256
+  _barkSounds:
+  - {fileID: 8300000, guid: 83a1a57849cecf14d89640c92895ec7d, type: 3}
+  - {fileID: 8300000, guid: 455ecd84fbcac574fa26725e0a296d12, type: 3}
+  - {fileID: 8300000, guid: 9cacd3f4d2ee201408238aa43129e641, type: 3}
+  - {fileID: 8300000, guid: ba0cda83b05ffb74bb15ca66af2cf015, type: 3}
+  - {fileID: 8300000, guid: 200e0f44eb7f45843a52730b3d6c8622, type: 3}
+  - {fileID: 8300000, guid: 99895b9a5db57c94daf722a4e4ddc6c1, type: 3}
+  - {fileID: 8300000, guid: 9200c217f5025e64086c80dc72846fa1, type: 3}
 --- !u!137 &137021348530660368
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

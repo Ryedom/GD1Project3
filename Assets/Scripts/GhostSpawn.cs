@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GhostSpawn : MonoBehaviour {
-
 	public GameObject ghost;
+	[SerializeField]
+	GameObjectPool _ghostPool;
 	public float spawnrate = 5.0f;
 	public float radius = 100;
 	public int spawnpoint_count = 10;
@@ -89,18 +90,18 @@ public class GhostSpawn : MonoBehaviour {
 	
 	// Spawn function
 	void Spawn () {
-
 		int i = Random.Range (0, spawnpoint_count);
 		Vector3 ghost_pos = spawnpoints [i];
 		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position- ghost_pos);
-		var newGhost = Instantiate (ghost, ghost_pos, ghost_rotation);
-		newGhost.transform.parent = gameObject.transform;
+		GameObject newGhost = _ghostPool.Get(); //Instantiate (ghost, ghost_pos, ghost_rotation);
+		newGhost.transform.position = ghost_pos;
+		newGhost.transform.rotation = ghost_rotation;
+		newGhost.GetComponent<PoolObject>().Activate();
 	}
 
 
 	//Check lose condition
 	void OnTriggerEnter(Collider c) {
-
 		//if (c.collider.gameObject.tag != "Terrain") {
 			//print (c.collider.gameObject.tag);
 		//}

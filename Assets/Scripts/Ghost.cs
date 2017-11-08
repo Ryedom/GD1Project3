@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 	Rigidbody _rigid;
+	PoolObject _poolObj;
 	public GameObject _follow;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
@@ -14,6 +15,7 @@ public class Ghost : MonoBehaviour {
 
 	void Start() {
 		_rigid = GetComponent<Rigidbody>();
+		_poolObj = GetComponent<PoolObject>();
 		//_player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
@@ -24,7 +26,7 @@ public class Ghost : MonoBehaviour {
 	void FixedUpdate() {
 		//MOVEMENT CODE
 		// Find the closest normal to the ground (if possible)
-		if (Physics.Raycast(transform.position,-_normal,out _normalHit,1000.0f,_ghostCastMask)) {
+		if (Physics.Raycast(transform.position,-_normal,out _normalHit,5.0f,_ghostCastMask)) {
 			_normal = _normalHit.normal;
 		}
 		else _normal = Vector3.up;
@@ -65,8 +67,8 @@ public class Ghost : MonoBehaviour {
 		//print ("Hello?");
 		if (c.gameObject.tag == "Bullet") {
 			//print ("Collision!");
-			Destroy(c.gameObject);
-			Destroy(gameObject);
+			_poolObj.Kill();
+			c.gameObject.GetComponent<PoolObject>().Kill();
 		}
 	}
 }

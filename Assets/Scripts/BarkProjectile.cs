@@ -9,9 +9,15 @@ public class BarkProjectile : MonoBehaviour {
     [SerializeField]
 	float _barkSpeed;
     float _barkHeight;
+	PoolObject _poolObj;
 	//public float _falloffAngle;
 
 	void Start () {
+		_poolObj = GetComponent<PoolObject>();
+		_poolObj.OnActivate += Activate;
+	}
+
+	void Activate() {
 		_lifeTimer = _lifetime;
         RaycastHit hit = new RaycastHit();
         if(!Physics.Raycast(new Ray(transform.position, Vector3.down), out hit, Mathf.Infinity, LayerMask.GetMask("Terrain")))
@@ -24,7 +30,8 @@ public class BarkProjectile : MonoBehaviour {
 	void Update () {
 		_lifeTimer -= Time.deltaTime;
 		if (_lifeTimer < 0.0f) {
-			GameObject.Destroy(gameObject);
+			_poolObj.Kill();
+			return;
 		}
 
         RaycastHit hit = new RaycastHit();

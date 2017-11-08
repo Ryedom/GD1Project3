@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	GameObject _barkPrefab;
 	[SerializeField]
+	GameObjectPool _barkPool;
+	[SerializeField]
 	GameObject _dog;
 	[SerializeField]
 	float _barkLength;
@@ -16,28 +18,27 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	LayerMask _playerCastMask;
 	[SerializeField]
-	AudioClip[] barksounds;
+	AudioClip[] _barkSounds;
 
 	Rigidbody _rigid;
 	Transform _model;
-    Animator dog_animator;
+    Animator _dogAnimator;
 	RaycastHit _normalHit;
 	Vector3 _normal = Vector3.up;
-	Vector2 inputVector;
+	Vector2 _inputVector;
 
 	Quaternion _rotationTurn = Quaternion.identity; // Rotation of the player turning
 	Quaternion _rotationPlane = Quaternion.identity; // Rotation of the player snapping to the ground
 	bool _canBark = true;
 	float _barkTimer;
-
-	AudioSource audiosource;
+	AudioSource _audioSource;
 
 	void Start () {
 		_rigid = GetComponent<Rigidbody> ();
         // _model = transform.GetChild(0);
-        dog_animator = _dog.GetComponent<Animator>();
+        _dogAnimator = _dog.GetComponent<Animator>();
         _barkTimer = _barkLength;
-		audiosource = GetComponent<AudioSource>();
+		_audioSource = GetComponent<AudioSource>();
 	}
 
 	void Update() {
@@ -46,7 +47,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.R))
 			UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 
-		inputVector = new Vector2(-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+		_inputVector = new Vector2(-Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 
 		// Bark timer
 		if (!_canBark) {
@@ -57,12 +58,16 @@ public class Player : MonoBehaviour {
 
 		// Bark if pressed
 		if (Input.GetButtonDown("Jump") && _canBark) {
-			GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
+			PoolObject newBullet = _barkPool.Get().GetComponent<PoolObject>();
+			newBullet.transform.position = transform.position + transform.rotation * _barkOffset;
+			newBullet.transform.rotation = transform.rotation;
+			newBullet.Activate();
+			//GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
 			_canBark = false;
 			_barkTimer = _barkLength;
 
 			//play a random bark sound
-			audiosource.PlayOneShot(barksounds[Random.Range(0, barksounds.Length)], 0.5f);
+			_audioSource.PlayOneShot(_barkSounds[Random.Range(0, _barkSounds.Length)], 0.5f);
 		}
 	
 		//var dog_controller = dog_animator.GetComponent<AnimatorControllerParameter> ();
@@ -75,15 +80,15 @@ public class Player : MonoBehaviour {
 		else _normal = Vector3.up;
 
 //		Vector2 rawInputVector = inputVector;
-		inputVector.Normalize();
-		float inputAngle = (Vector2.SignedAngle(Vector2.up,inputVector) + 360.0f) % 360.0f;
+		_inputVector.Normalize();
+		float inputAngle = (Vector2.SignedAngle(Vector2.up,_inputVector) + 360.0f) % 360.0f;
 		// Movement logic
-		if (inputVector.magnitude >= 0.01f) {
+		if (_inputVector.magnitude >= 0.01f) {
 
 			if (_dog.activeSelf) {
 				// print ("walking");
-				if(dog_animator.runtimeAnimatorController != null)
-					dog_animator.SetBool ("Walking", true);
+				if(_dogAnimator.runtimeAnimatorController != null)
+					_dogAnimator.SetBool ("Walking", true);
 			}
 
 			float camAngle = Camera.main.transform.eulerAngles.y;
@@ -105,8 +110,8 @@ public class Player : MonoBehaviour {
 			//transform.rotation *= _rotationTurn;
 		}
 		else {
-			inputVector = Vector2.zero;
-			dog_animator.SetBool ("Walking", false);
+			_inputVector = Vector2.zero;
+			_dogAnimator.SetBool ("Walking", false);
 		}
 
 		// Make the player be tangent to the ground below
