@@ -642,7 +642,7 @@ MonoBehaviour:
   _ghostCastMask:
     serializedVersion: 2
     m_Bits: 256
-  _defaultLife: 2
+  _defaultLife: 3
   life: 3
 --- !u!114 &114676328009713784
 MonoBehaviour:

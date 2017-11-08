@@ -15,6 +15,7 @@ public class BarkProjectile : MonoBehaviour {
 	void Start () {
 		_poolObj = GetComponent<PoolObject>();
 		_poolObj.OnActivate += Activate;
+		_lifeTimer = _lifetime;
 	}
 
 	void Activate() {
@@ -39,7 +40,7 @@ public class BarkProjectile : MonoBehaviour {
         float yDiff = hit.distance - _barkHeight;
 
 
-        transform.Translate(0, -yDiff, _barkSpeed);
+        transform.Translate(0, -yDiff, _barkSpeed * 60.0f * Time.deltaTime);
 
 	}
 }

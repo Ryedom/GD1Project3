@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
 		}
 
 		// Bark if pressed
-		if (Input.GetButtonDown("Jump") && _canBark && (currentenergy - barkcost >= 0)) {
+		if (Input.GetButtonDown("Fire") && _canBark && (currentenergy - barkcost >= 0)) {
 			GameObject newBark = _barkPool.Get(); //GameObject.Instantiate(_barkPrefab,transform.position + _barkOffset,transform.rotation);
 			newBark.transform.position = transform.position + transform.rotation * _barkOffset;
 			newBark.transform.rotation = transform.rotation;

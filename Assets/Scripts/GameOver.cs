@@ -4,19 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
-
-		if (Input.GetKey (KeyCode.Space)) {
-			SceneManager.LoadScene ("Menu");
-		}
 		if (Input.GetKey(KeyCode.Escape))
 			Application.Quit();
+		if (Input.GetButton("Fire")) {
+			SceneManager.LoadScene ("Menu");
+		}
 	}
 }
