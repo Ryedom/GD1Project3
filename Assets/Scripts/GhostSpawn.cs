@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GhostSpawn : MonoBehaviour {
-
-	public GameObject[] ghosts;
+	public GameObject ghost;
+	[SerializeField]
+	GameObjectPool _ghostPool;
 	public float spawnrate = 5.0f;
 	public float radius = 100;
 	public int spawnpoint_count = 10;
@@ -71,13 +72,8 @@ public class GhostSpawn : MonoBehaviour {
 		if (timeLeft <= 0) {
 			CancelInvoke ("Spawn");
 			if (level == 3) {
-				foreach (Transform child in transform) {
-					remaining_ghosts += 1;
-				}
-				if (remaining_ghosts == 0) {
+				if (GameObject.FindGameObjectsWithTag("Ghost").Length == 0) {
 					SceneManager.LoadScene ("WinState");
-				} else {
-					remaining_ghosts = 0;
 				}
 			} else {
 				level += 1;
@@ -92,18 +88,18 @@ public class GhostSpawn : MonoBehaviour {
 
 	// Spawn function
 	void Spawn () {
-
 		int i = Random.Range (0, spawnpoint_count);
 		Vector3 ghost_pos = spawnpoints [i];
 		Quaternion ghost_rotation = Quaternion.LookRotation(transform.position- ghost_pos);
-		var newGhost = Instantiate (ghosts[Random.Range(0, ghosts.Length)], ghost_pos, ghost_rotation);
-		newGhost.transform.parent = gameObject.transform;
+		GameObject newGhost = _ghostPool.Get(); //Instantiate (ghost, ghost_pos, ghost_rotation);
+		newGhost.transform.position = ghost_pos;
+		newGhost.transform.rotation = ghost_rotation;
+		newGhost.GetComponent<PoolObject>().Activate();
 	}
 
 
 	//Check lose condition
 	void OnTriggerEnter(Collider c) {
-
 		//if (c.collider.gameObject.tag != "Terrain") {
 			//print (c.collider.gameObject.tag);
 		//}

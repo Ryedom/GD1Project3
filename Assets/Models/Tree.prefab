@@ -61,15 +61,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpSpecMap:
-        m_Texture: {fileID: 2800000, guid: 95476214df19b4297b8d5e9983b66209, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3ada709f1b5074ca5b77da3b62da52cd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 66967cc21b2eb40d5a52cd7c5bc1e8ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: d260ce2625685499a8ab26a359dbd882, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMap:
-        m_Texture: {fileID: 2800000, guid: d7afebd7aaa3a47639216545af8c3e99, type: 3}
+        m_Texture: {fileID: 2800000, guid: 07231ae10d9344cbe8eabfc06c89e2dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -98,19 +98,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpSpecMap:
-        m_Texture: {fileID: 2800000, guid: 95476214df19b4297b8d5e9983b66209, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3ada709f1b5074ca5b77da3b62da52cd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 66967cc21b2eb40d5a52cd7c5bc1e8ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: d260ce2625685499a8ab26a359dbd882, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowTex:
-        m_Texture: {fileID: 2800000, guid: e9aa35e8a73ad45958d802409e2e8a70, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49739019657cb4fc9872aa145b81e00b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyMap:
-        m_Texture: {fileID: 2800000, guid: d7afebd7aaa3a47639216545af8c3e99, type: 3}
+        m_Texture: {fileID: 2800000, guid: 07231ae10d9344cbe8eabfc06c89e2dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 1474
-  materialHash: a711204197e85055d0eb2b67b3eb5aa7255852544
+  materialHash: cc7445dd872de07a58590d66c6f585df255852544
   root:
     _uniqueID: 1
     seed: 1234
