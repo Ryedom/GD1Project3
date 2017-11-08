@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44542485, g: 0.23070538, b: 0.43849027, a: 1}
+  m_IndirectSpecularColor: {r: 0.44552714, g: 0.23068401, b: 0.43849027, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -297,6 +297,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 782042095}
+    - target: {fileID: 4234966947522262, guid: d64d5f4c26304d141baf517630024b65, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d64d5f4c26304d141baf517630024b65, type: 2}
   m_IsPrefabParent: 0
@@ -931,7 +935,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4947987716499170, guid: 6e61cf5e30b7c497088af3ef05b14689, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 28.5
+      value: 25.1
       objectReference: {fileID: 0}
     - target: {fileID: 4947987716499170, guid: 6e61cf5e30b7c497088af3ef05b14689, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1079,7 +1083,7 @@ Prefab:
     - target: {fileID: 224694895636688138, guid: 43b6b209b98564f7093877c881967f27,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 515.5
+      value: 515
       objectReference: {fileID: 0}
     - target: {fileID: 224694895636688138, guid: 43b6b209b98564f7093877c881967f27,
         type: 2}
@@ -1114,7 +1118,7 @@ Prefab:
     - target: {fileID: 224694895636688138, guid: 43b6b209b98564f7093877c881967f27,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224694895636688138, guid: 43b6b209b98564f7093877c881967f27,
         type: 2}
@@ -1408,7 +1412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4916362320420952, guid: 1963561cc0f054b59b3c12c6e558c0fd, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114024146526933814, guid: 1963561cc0f054b59b3c12c6e558c0fd,
         type: 2}
@@ -1525,7 +1529,7 @@ Transform:
   m_LocalScale: {x: 32.215885, y: 32.215878, z: 32.215878}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1596150496 stripped
 GameObject:
@@ -1716,5 +1720,5 @@ Transform:
   m_Children:
   - {fileID: 1883855780}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
